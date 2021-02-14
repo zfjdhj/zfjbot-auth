@@ -3,10 +3,10 @@ import time
 
 from hoshino import *
 
-sv = Service("zfjbot-auth", enable_on_default=False)
+sv = Service("zfjbot-auth", enable_on_default=True)
 group_auth = auth()
 bot=get_bot()
-leave_msg={"5":"喵？到时间了喵~？","4":"骑士君真的不想要猫猫了吗？","3":"我还不想要离开骑士君~呜喵~","2":"八嘎，猫猫讨厌骑士君...","1":"猫猫真的要走了哦","0":"骑士君！别れるのはつらいけど、まだどちらでお会いにできるかもしれないので、それを楽しみしてます。",}
+leave_msg={"5":"喵？到时间了喵~？","4":"骑士君真的不想要猫猫了吗？","3":"我还不想要离开骑士君~呜喵~","2":"バーカー，猫猫讨厌骑士君...","1":"猫猫真的要走了哦","0":"骑士君！别れるのはつらいけど、まだどちらでお会いにできるかもしれないので、それを楽しみしてます。",}
     
 black_list=[
     128520726,
@@ -30,7 +30,7 @@ def check(gid: str="", msg: str = "========猫猫契约========") -> str:
             msg += f"\n================"
             rest_day=cal_day(timeStamp2time(int(auth_info['auth_time'])),timeStamp2time(time.time())).days
             if rest_day <0:
-                msg+="\nNya~ 还有人记得猫猫吗？猫猫不要和コッコロちゃん一样！"
+                msg+="\nNia~ 还有人记得猫猫吗？猫猫不要和コッコロちゃん一样！"
             elif rest_day <=5:
                 msg+=f"\n{leave_msg[str(rest_day)]}"
         else:
