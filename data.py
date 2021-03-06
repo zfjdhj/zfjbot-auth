@@ -1,7 +1,16 @@
+"""
+Author: zfj
+Date: 2021-03-06 16:21:30
+LastEditTime: 2021-03-06 16:21:30
+LastEditors: zfj
+Description: None
+GitHub: https://github.com/zfjdhj
+"""
 import os
 import json
 import time
 import datetime
+
 # from datetime import datetime, timedelta, timezone
 
 plugin_path = os.path.dirname(__file__)
@@ -41,6 +50,7 @@ class auth:
         self.data = open_jsonfile(plugin_path + "/data.json")
 
     def get_auth_info(self, gid: str) -> dict:
+        self.data_refresh()
         return self.data[gid]
 
     def get_join_time(self, gid: str) -> str:
@@ -54,15 +64,17 @@ class auth:
         self.data[gid]["auth_time"] = str(int(auth_time) + addtime)
         self.save_data()
         return self.data[gid]["auth_time"]
-    
+
     def add_new_group(self, gid: str, info: dict) -> str:
         self.data[gid] = info[gid]
         self.save_data()
         return self.data[gid]["auth_time"]
-    
 
     def save_data(self) -> None:
         write2json(plugin_path + "/data.json", self.data)
+
+    def data_refresh(self):
+        self.__init__()
 
 
 # test
