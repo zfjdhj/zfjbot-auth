@@ -96,7 +96,7 @@ async def main(bot, ev):
         }
         print(new_group_info)
         group_auth.add_new_group(item, new_group_info)
-        msg = "暂无本群信息，已自动签订契约，要善待猫猫哦"
+        msg = "暂无本群信息，已自动签订契约，要善待猫猫哦\n"
         msg += check(str(ev.group_id))
         await bot.send(ev, msg)
 
